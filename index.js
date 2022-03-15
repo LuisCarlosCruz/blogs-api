@@ -4,9 +4,9 @@ const app = express();
 
 app.use(express.json());
 
+// ------
 const usersRouter = require('./routers/usersRouter.js');
 
-// ------
 app.use('/', usersRouter);
 // ------
 
