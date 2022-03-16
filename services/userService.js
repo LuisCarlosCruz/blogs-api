@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const genToken = async (data) => {
   const jwtConfig = {
-    expiresIn: '2h',
+    expiresIn: '1d',
     algorithm: 'HS256',
   };
 
@@ -28,4 +28,4 @@ const createUser = async (body) => {
   return token;
 };
 
-module.exports = { createUser };
+module.exports = { createUser, genToken };

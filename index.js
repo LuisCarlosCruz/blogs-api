@@ -7,6 +7,7 @@ app.use(express.json());
 // ------
 const usersRouter = require('./routers/usersRouter.js');
 
+// R1
 app.use('/', usersRouter);
 // ------
 

@@ -25,6 +25,13 @@ const validateDisplayName = (req, res, next) => {
 const validateEmail = (req, res, next) => {
   const { email } = req.body;
 
+  const isEmptyEmail = email === '';
+  
+  if (isEmptyEmail) {
+      return res
+        .status(StatusCodes.BAD_REQUEST).send({ message: '"email" is not allowed to be empty' });
+  }
+
   if (!email) return res.status(StatusCodes.BAD_REQUEST).send({ message: '"email" is required' });
 
   const verifyEmail = (data) => {
@@ -41,6 +48,12 @@ const validateEmail = (req, res, next) => {
 
 const validatePassWord = (req, res, next) => {
   const { password } = req.body;
+
+  const isEmptyPassword = password === '';
+  if (isEmptyPassword) {
+    return res
+      .status(StatusCodes.BAD_REQUEST).send({ message: '"password" is not allowed to be empty' });
+  }
 
   if (!password) { 
     return res.status(StatusCodes.BAD_REQUEST).send({ message: '"password" is required' });
