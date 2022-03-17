@@ -14,8 +14,19 @@ const createUser = async (req, res, _next) => {
     return res.status(StatusCodes.CREATED).json({ token: user });
   } catch (err) {
     console.log(err.message);
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ message: 'Error Interno' });
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ message: 'Erro Interno' });
   }
 };
 
-module.exports = { createUser };
+const getAllUser = async (_req, res, _next) => {
+  try {
+    const allUser = await userService.getAllUser();
+
+    return res.status(StatusCodes.OK).json(allUser);
+  } catch (err) {
+    console.log(err.message);
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ message: 'Erro Interno' });
+  }
+};
+
+module.exports = { createUser, getAllUser };

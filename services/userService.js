@@ -28,4 +28,10 @@ const createUser = async (body) => {
   return token;
 };
 
-module.exports = { createUser, genToken };
+const getAllUser = async () => {
+  const allUser = await User.findAll();
+
+  return allUser;
+};
+
+module.exports = { createUser, genToken, getAllUser };
