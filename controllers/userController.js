@@ -29,4 +29,21 @@ const getAllUser = async (_req, res, _next) => {
   }
 };
 
-module.exports = { createUser, getAllUser };
+const getUserById = async (req, res, _next) => {
+  try {
+    const { id } = req.params;
+
+    const user = await userService.getUserById(id);
+
+    if (user.status) {
+      return res.status(StatusCodes.NOT_FOUND).send({ message: 'User does not exist' });
+    }
+
+    return res.status(StatusCodes.OK).json(user);
+  } catch (err) {
+    console.log(err.message);
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ message: 'Erro Interno' });
+  }
+};
+
+module.exports = { createUser, getAllUser, getUserById };

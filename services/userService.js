@@ -34,4 +34,14 @@ const getAllUser = async () => {
   return allUser;
 };
 
-module.exports = { createUser, genToken, getAllUser };
+const getUserById = async (id) => {
+  const user = await User.findOne({ where: { id } });
+
+  if (!user) return { status: 404, message: 'USER NAO EXISTE' };
+
+  const { password: _password, ...dataValues } = user.dataValues;
+
+  return dataValues;
+};
+
+module.exports = { createUser, genToken, getAllUser, getUserById };

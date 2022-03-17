@@ -13,6 +13,10 @@ validateMiddleware.validateDisplayName,
 validateMiddleware.validateEmail,
 userController.createUser);
 
+router.get('/user/:id',
+validateToken.validaToken,
+userController.getUserById);
+
 router.get('/user',
 validateToken.validaToken,
 userController.getAllUser);
