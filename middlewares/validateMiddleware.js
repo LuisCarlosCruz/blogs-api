@@ -69,4 +69,13 @@ const validatePassWord = (req, res, next) => {
   next();
 };
 
-module.exports = { validateDisplayName, validateEmail, validatePassWord };
+const validateCategory = (req, res, next) => {
+  const { name } = req.body;
+  
+  if (!name) {
+    return res.status(StatusCodes.BAD_REQUEST).send({ message: '"name" is required' });
+  }
+  next();
+};
+
+module.exports = { validateDisplayName, validateEmail, validatePassWord, validateCategory };

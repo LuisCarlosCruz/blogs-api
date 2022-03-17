@@ -6,9 +6,10 @@ app.use(express.json());
 
 // ------
 const usersRouter = require('./routers/usersRouter.js');
+const categoriesRouter = require('./routers/categoriesRouter.js');
 
-// R1
 app.use('/', usersRouter);
+app.use('/', categoriesRouter);
 // ------
 
 require('dotenv').config();

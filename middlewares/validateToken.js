@@ -7,16 +7,10 @@ const validaToken = async (req, res, next) => {
     const token = req.headers.authorization;
 
     if (!token) {
-      return res.status(401).json({ message: 'Token not found' });
+      return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Token not found' });
     }
 
     const decoded = await jwt.verify(token, process.env.SECRET);
-
-    // const user = await User.findOne({ where: { displayName: decoded.displayName } });
-
-    // if (!user.displayName) {
-    //   return res.status(StatusCodes.NOT_FOUND).json({ message: 'User does not exist' });
-    // }
 
     req.user = decoded;
     next();
