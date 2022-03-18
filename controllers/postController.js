@@ -13,8 +13,8 @@ const createPost = async (req, res, _next) => {
     if (categoryIsValid.status) {
       return res.status(StatusCodes.BAD_REQUEST).json({ message: categoryIsValid.message });
     }
-
-    const result = await postService.createPost(id, title, content);
+    
+    const result = await postService.createPost(id, title, content, categoryIds);
 
     return res.status(StatusCodes.CREATED).json(result);
   } catch (err) {
