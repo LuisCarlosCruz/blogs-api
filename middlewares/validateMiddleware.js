@@ -78,4 +78,40 @@ const validateCategory = (req, res, next) => {
   next();
 };
 
-module.exports = { validateDisplayName, validateEmail, validatePassWord, validateCategory };
+const validateTitle = async (req, res, next) => {
+  const { title } = req.body;
+
+  if (!title) return res.status(StatusCodes.BAD_REQUEST).send({ message: '"title" is required' });
+
+  next();
+};
+
+const validateContent = async (req, res, next) => {
+  const { content } = req.body;
+
+  if (!content) {
+    return res.status(StatusCodes.BAD_REQUEST).send({ message: '"content" is required' });
+  }
+
+  next();
+};
+
+const validateCategoryId = async (req, res, next) => {
+  const { categoryIds } = req.body;
+
+  if (!categoryIds) {
+    return res.status(StatusCodes.BAD_REQUEST).send({ message: '"categoryIds" is required' });
+  }
+
+  next();
+};
+
+module.exports = {
+  validateDisplayName,
+  validateEmail,
+  validatePassWord,
+  validateCategory,
+  validateTitle,
+  validateContent,
+  validateCategoryId,
+};

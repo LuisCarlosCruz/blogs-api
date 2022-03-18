@@ -11,8 +11,8 @@ validateToken.validaToken,
 validateMiddleware.validateCategory,
 categoriesController.createCategory);
 
-// router.get('/categories',
-
-// );
+router.get('/categories',
+validateToken.validaToken,
+categoriesController.getAllCategories);
 
 module.exports = router;

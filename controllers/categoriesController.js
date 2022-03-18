@@ -14,4 +14,15 @@ const createCategory = async (req, res, _next) => {
   }
 };
 
-module.exports = { createCategory };
+const getAllCategories = async (req, res, _next) => {
+  try {
+    const result = await categoriesService.getAllCategories();
+
+    return res.status(StatusCodes.OK).json(result);
+  } catch (err) {
+    console.log(err.message);
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ message: 'Erro Interno' });
+  }
+};
+
+module.exports = { createCategory, getAllCategories };
