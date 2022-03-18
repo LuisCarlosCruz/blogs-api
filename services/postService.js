@@ -8,9 +8,8 @@ const createPost = async (id, title, content, categoryIds) => {
   
   const { id: postId } = result.dataValues;
 
-  await Promise.all(categoryIds.map((category) => {
-    PostsCategories.create({ categoryId: category, postId });
-  }));
+  await Promise
+    .all(categoryIds.map((category) => PostsCategories.create({ categoryId: category, postId })));
   return post;
 };
 
