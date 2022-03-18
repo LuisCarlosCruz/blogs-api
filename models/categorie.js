@@ -7,10 +7,6 @@ const Categorie = (sequelize, DataTypes) => {
     tableName: 'Categories',
   });
 
-  // ??.associate = (models) => {
-  //   ??.hasMany(models.??, { foreignKey: '??', as: '??'});
-  // }
-
   return categorie;
 };
 

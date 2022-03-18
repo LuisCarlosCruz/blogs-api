@@ -13,7 +13,6 @@ const createPost = async (req, res, _next) => {
     if (categoryIsValid.status) {
       return res.status(StatusCodes.BAD_REQUEST).json({ message: categoryIsValid.message });
     }
-    console.log(req.user.userSemPassword, 'CONTROLLER');
 
     const result = await postService.createPost(id, title, content);
 
