@@ -9,7 +9,7 @@ const genToken = async (data) => {
     algorithm: 'HS256',
   };
 
-  const token = jwt.sign(data, process.env.SECRET, jwtConfig);
+  const token = jwt.sign(data, process.env.JWT_SECRET, jwtConfig);
 
   return token;
 };

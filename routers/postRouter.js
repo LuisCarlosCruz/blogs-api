@@ -13,4 +13,8 @@ validateMiddleware.validateCategoryId,
 validateToken.validaToken,
 postController.createPost);
 
+router.get('/post',
+validateToken.validaToken,
+postController.getAllPosts);
+
 module.exports = router;

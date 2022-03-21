@@ -13,6 +13,12 @@ const createPost = async (id, title, content, categoryIds) => {
   return post;
 };
 
-module.exports = { createPost };
+const getAllPosts = async () => {
+  const allPosts = await BlogPost.findAll();
+
+  return allPosts;
+};
+
+module.exports = { createPost, getAllPosts };
 
 // 

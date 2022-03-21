@@ -13,7 +13,7 @@ const createPost = async (req, res, _next) => {
     if (categoryIsValid.status) {
       return res.status(StatusCodes.BAD_REQUEST).json({ message: categoryIsValid.message });
     }
-    
+
     const result = await postService.createPost(id, title, content, categoryIds);
 
     return res.status(StatusCodes.CREATED).json(result);
@@ -23,4 +23,15 @@ const createPost = async (req, res, _next) => {
   }
 };
 
-module.exports = { createPost };
+const getAllPosts = async (req, res, _next) => {
+  try {
+    const result = await postService.getAllPosts();
+
+    return res.status(StatusCodes.OK).json(result);
+  } catch (err) {
+    console.log(err.message);
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ message: 'Erro Interno' });
+  }
+};
+
+module.exports = { createPost, getAllPosts };

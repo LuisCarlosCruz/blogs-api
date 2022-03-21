@@ -10,7 +10,7 @@ const validaToken = async (req, res, next) => {
       return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Token not found' });
     }
 
-    const decoded = await jwt.verify(token, process.env.SECRET);
+    const decoded = await jwt.verify(token, process.env.JWT_SECRET);
 
     req.user = decoded;
     next();
